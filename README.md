@@ -15,8 +15,8 @@ Browser (React)  <--WebSocket-->  CF Worker  <--WebSocket-->  OpenAI Realtime AP
 - **Backend** (`/workers/realtime`): Cloudflare Worker + Durable Object. Bridges client WebSocket to OpenAI Realtime API, handles tool calls server-side.
 - **Shared** (`/shared`): TypeScript types, constants, and utilities shared between frontend and backend.
 - **Scenarios** (`/scenarios`): JSON lesson scenario definitions.
-
-## Monorepo Structure
+d
+## Monorepo Structured
 
 ```
 ├── apps/web/                  # Vite + React frontend
