@@ -15,18 +15,29 @@ export function CallScreen() {
     [],
   );
 
-  const { connected, transcript, recentEvents, connect, disconnect } =
-    useRealtime({ scenarioId, userId });
+  const {
+    connected,
+    transcript,
+    recentEvents,
+    micDebug,
+    connect,
+    disconnect,
+    startMic,
+    stopMic,
+  } = useRealtime({ scenarioId, userId });
 
-  const handleCallToggle = () => {
+  const handleCallToggle = async () => {
     if (connected) {
+      stopMic();
       disconnect();
     } else {
       connect();
+      await startMic();
     }
   };
 
   const handleExit = () => {
+    stopMic();
     disconnect();
     navigate("/");
   };
@@ -43,6 +54,9 @@ export function CallScreen() {
       </div>
     );
   }
+
+  // Button label & style depend on mic state
+  const listening = connected && micDebug.micActive;
 
   return (
     <div className="call-screen">
@@ -92,15 +106,15 @@ export function CallScreen() {
       {/* Bottom: Call button */}
       <div className="call-bottom">
         <button
-          className={`call-btn ${connected ? "connected" : ""}`}
+          className={`call-btn ${listening ? "listening" : ""} ${connected && !listening ? "connected" : ""}`}
           onClick={handleCallToggle}
         >
-          {connected ? "End" : "Start Call"}
+          {listening ? "Listening..." : connected ? "End" : "Start Call"}
         </button>
       </div>
 
       {/* Debug panel (dev only) */}
-      <DebugPanel events={recentEvents} />
+      <DebugPanel events={recentEvents} micDebug={micDebug} />
     </div>
   );
 }
