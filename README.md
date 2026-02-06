@@ -16,7 +16,7 @@ Browser (React)  <--WebSocket-->  CF Worker  <--WebSocket-->  OpenAI Realtime AP
 - **Shared** (`/shared`): TypeScript types, constants, and utilities shared between frontend and backend.
 - **Scenarios** (`/scenarios`): JSON lesson scenario definitions.
 d
-## Monorepo Structured
+## Monorepo Structuredd
 
 ```
 ├── apps/web/                  # Vite + React frontend
