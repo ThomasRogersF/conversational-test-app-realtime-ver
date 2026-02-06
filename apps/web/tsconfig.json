@@ -1,0 +1,13 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "jsx": "react-jsx",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "baseUrl": ".",
+    "paths": {
+      "@ai-tutor/shared": ["../../shared/src/index.ts"]
+    }
+  },
+  "include": ["src", "vite-env.d.ts", "../../shared/src"]
+}

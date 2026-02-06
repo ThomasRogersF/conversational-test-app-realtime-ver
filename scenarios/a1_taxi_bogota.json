@@ -1,0 +1,55 @@
+{
+  "id": "a1_taxi_bogota",
+  "level": "A1",
+  "title": "Taking a Taxi in Bogotá",
+  "system": "Scenario: The student has just arrived at El Dorado International Airport in Bogotá, Colombia and needs to take a taxi to their hotel in the La Candelaria neighborhood.\n\nYou play the role of a friendly taxi driver named Carlos. Speak in simple Spanish. The student is a beginner (A1 level). Help them practice:\n- Greeting and asking for a ride\n- Saying where they want to go\n- Asking how much it costs\n- Basic numbers and directions\n\nKeep your Spanish simple. If the student struggles, offer hints in Spanish with very simple words.",
+  "opening_line": "¡Hola! Bienvenido a Bogotá. Soy Carlos, su conductor. ¿A dónde quiere ir?",
+  "tools": [
+    {
+      "type": "function",
+      "name": "grade_lesson",
+      "description": "Grade the student's performance in the current lesson scenario. Call this when the conversation has reached a natural conclusion or the student asks to end the lesson.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "vocabulary_score": {
+            "type": "number",
+            "description": "Score from 0.0 to 1.0 for vocabulary usage"
+          },
+          "grammar_score": {
+            "type": "number",
+            "description": "Score from 0.0 to 1.0 for grammar correctness"
+          },
+          "fluency_score": {
+            "type": "number",
+            "description": "Score from 0.0 to 1.0 for conversational fluency"
+          },
+          "notes": {
+            "type": "string",
+            "description": "Brief feedback notes for the student"
+          }
+        },
+        "required": ["vocabulary_score", "grammar_score", "fluency_score"]
+      }
+    },
+    {
+      "type": "function",
+      "name": "trigger_quiz",
+      "description": "Trigger a vocabulary or grammar quiz for the student based on the current lesson. Call this when the student has practiced enough and is ready for a quick quiz.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "lesson_id": {
+            "type": "string",
+            "description": "The scenario/lesson ID to generate a quiz for"
+          },
+          "focus": {
+            "type": "string",
+            "description": "What to focus the quiz on: vocabulary, grammar, or both"
+          }
+        },
+        "required": ["lesson_id"]
+      }
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "ai-tutor-realtime",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently -n worker,web -c blue,green \"pnpm --filter @ai-tutor/realtime-worker dev\" \"pnpm --filter @ai-tutor/web dev\"",
+    "dev:worker": "pnpm --filter @ai-tutor/realtime-worker dev",
+    "dev:web": "pnpm --filter @ai-tutor/web dev",
+    "build": "pnpm --filter @ai-tutor/shared build && pnpm --filter @ai-tutor/realtime-worker build && pnpm --filter @ai-tutor/web build",
+    "typecheck": "pnpm -r typecheck",
+    "deploy:worker": "pnpm --filter @ai-tutor/realtime-worker deploy"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0",
+    "typescript": "^5.7.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "workerd",
+      "sharp"
+    ]
+  }
+}

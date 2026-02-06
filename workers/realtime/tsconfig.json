@@ -1,0 +1,13 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "types": ["@cloudflare/workers-types"],
+    "lib": ["ES2022"],
+    "baseUrl": ".",
+    "paths": {
+      "@ai-tutor/shared": ["../../shared/src/index.ts"]
+    }
+  },
+  "include": ["src", "../../shared/src"]
+}
